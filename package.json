@@ -1,0 +1,25 @@
+{
+  "name": "buscar-web-projeto-1",
+  "version": "1.0.0",
+  "description": "Projeto de serviço de busca com Node.js e MongoDB",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatheusMeneguim/buscar-web-projeto-1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MatheusMeneguim/buscar-web-projeto-1/issues"
+  },
+  "homepage": "https://github.com/MatheusMeneguim/buscar-web-projeto-1#readme",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.15.0"
+  }
+}
