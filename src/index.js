@@ -1,5 +1,6 @@
-const connectDB = require('./database/mongo');
 const express = require('express');
+const connectDB = require('./database/mongo');
+const { buscarPorPalavraChave, deletarWebsite } = require('./controllers/websiteController');
 const app = express();
 
 // Permite o uso de JSON no corpo das requisições
@@ -12,6 +13,11 @@ app.get('/', (req, res) => {
   res.send('Servidor rodando com sucesso!');
 });
 
+// Rotas reais do projeto
+app.get('/buscar', buscarPorPalavraChave);
+app.delete('/deletar/:id', deletarWebsite);
+
+// Conecta ao MongoDB
 connectDB();
 
 // Iniciar servidor
