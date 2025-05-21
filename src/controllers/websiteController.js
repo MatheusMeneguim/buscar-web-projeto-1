@@ -6,6 +6,10 @@ const buscarPorPalavraChave = async (req, res) => {
   const termo = req.query.termo;
 
   if (!termo) {
+    fs.appendFileSync(
+      'logs/erros.log',
+      `[${new Date().toISOString()}] Erro: parâmetro "termo" ausente na rota /buscar\n`
+    );
     return res.status(400).json({ erro: 'Parâmetro "termo" é obrigatório' });
   }
 
@@ -22,6 +26,7 @@ const buscarPorPalavraChave = async (req, res) => {
     res.status(500).json({ erro: 'Erro ao buscar websites.' });
   }
 };
+
 
 // Rota para deletar por ID
 const deletarWebsite = async (req, res) => {
