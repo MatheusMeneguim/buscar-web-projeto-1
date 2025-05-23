@@ -1,26 +1,28 @@
-const express = require('express');
 const connectDB = require('./database/mongo');
-const { buscarPorPalavraChave, deletarWebsite } = require('./controllers/websiteController');
-const app = express();
+const Website = require('./models/Website');
+const Usuario = require('./models/Usuario');
+const Categoria = require('./models/Categoria');
 
-// Permite o uso de JSON no corpo das requisições
-app.use(express.json());
+async function iniciarProjeto() {
+  try {
+    await connectDB();
+    console.log('Conectado ao MongoDB');
 
-const PORT = process.env.PORT || 3000;
+    const websites = await Website.find();
+    console.log('Websites cadastrados:');
+    console.log(websites);
 
-// Rota de teste
-app.get('/', (req, res) => {
-  res.send('Servidor rodando com sucesso!');
-});
+    const usuarios = await Usuario.find();
+    console.log('Usuários cadastrados:');
+    console.log(usuarios);
 
-// Rotas reais do projeto
-app.get('/buscar', buscarPorPalavraChave);
-app.delete('/deletar/:id', deletarWebsite);
+    const categorias = await Categoria.find();
+    console.log('Categorias cadastradas:');
+    console.log(categorias);
 
-// Conecta ao MongoDB
-connectDB();
+  } catch (erro) {
+    console.error('Erro ao iniciar o projeto:', erro.message);
+  }
+}
 
-// Iniciar servidor
-app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
-});
+iniciarProjeto();

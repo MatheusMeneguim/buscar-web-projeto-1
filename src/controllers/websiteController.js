@@ -14,7 +14,9 @@ const buscarPorPalavraChave = async (req, res) => {
   }
 
   try {
-    const resultados = await Website.find({ palavrasChave: termo });
+    const resultados = await Website.find({
+      palavrasChave: { $regex: termo, $options: 'i' }
+    });
 
     if (resultados.length === 0) {
       return res.status(404).json({ mensagem: 'Nenhum site encontrado com esse termo.' });
@@ -26,6 +28,7 @@ const buscarPorPalavraChave = async (req, res) => {
     res.status(500).json({ erro: 'Erro ao buscar websites.' });
   }
 };
+
 
 
 // Rota para deletar por ID

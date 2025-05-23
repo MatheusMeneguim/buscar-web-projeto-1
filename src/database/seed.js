@@ -28,7 +28,20 @@ const connectDB = async () => {
         url: 'https://github.com',
         descricao: 'Hospedagem de código-fonte',
         palavrasChave: ['código', 'repositório', 'projetos']
+      },
+      {
+        titulo: 'Loja Yes',
+        url: 'https://instagram.com/lojayes',
+        descricao: 'Moda feminina em Ourinhos',
+        palavrasChave: ['ourinhos', 'moda', 'feminina', 'loja', 'roupa']
+      },
+       {
+        titulo: 'Facebook',
+        url: 'https://www.facebook.com',
+        descricao: 'Site do Facebook',
+        palavrasChave: ['Facebook']
       }
+
     ]);
 
     console.log('Dados inseridos com sucesso!');
