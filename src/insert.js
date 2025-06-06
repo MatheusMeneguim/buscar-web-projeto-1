@@ -27,6 +27,25 @@ async function inserirDireto() {
     categoriaId: categoria._id
   });
 
+const usuario2 = await Usuario.create({
+    nome: 'Murilo Silva',
+    email: 'murilo@email.com'
+});
+
+const categoria2 = await Categoria.create({
+  nome: 'Tecnologia',
+  descricao: 'Sites de tecnologia e inovação'
+});
+
+const website2 = await Website.create({
+  titulo: 'Tech News',
+  url: 'https://technews.com',
+  descricao: 'Notícias de tecnologia',
+  palavrasChave: ['tecnologia', 'inovação', 'notícias'],
+  usuarioId: usuario2._id,
+  categoriaId: categoria2._id
+});
+
   console.log('Website inserido:\n', website);
   mongoose.disconnect();
 }
