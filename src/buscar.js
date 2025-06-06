@@ -7,7 +7,7 @@ const Website = require('./models/Website');
 async function buscarPorTermo() {
   await connectDB();
 
-  const termo = 'moda'; 
+  const termo ='';
 
   if (!termo) {
     const erroMsg = `[${new Date().toISOString()}] Erro: parâmetro "termo" ausente na busca\n`;
@@ -23,6 +23,8 @@ async function buscarPorTermo() {
     });
 
     if (resultados.length === 0) {
+      const erroMsg = `[${new Date().toISOString()}] Nenhum resultado encontrado para o termo "${termo}"\n`;
+      fs.appendFileSync('logs/erros.log', erroMsg);
       console.log('Nenhum resultado encontrado.');
     } else {
       console.log('Resultados encontrados:\n', resultados);
