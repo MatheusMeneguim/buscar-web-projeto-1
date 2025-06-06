@@ -6,7 +6,7 @@ const Website = require('./models/Website');
 async function deletarPorId() {
   await connectDB();
 
-  const id = '68431205b3ad677b556699e8'; 
+  const id = '68435a014682bb9906def51d'; 
 
   try {
     const resultado = await Website.findByIdAndDelete(id);
